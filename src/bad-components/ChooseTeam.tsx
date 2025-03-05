@@ -14,18 +14,24 @@ export function ChooseTeam(): React.JSX.Element {
     const [allOptions, setAllOptions] = useState<string[]>(PEOPLE);
     const [team, setTeam] = useState<string[]>([]);
 
-    function chooseMember() {
+    function chooseMember(newMember: string) {
         /*
         if (!team.includes(newMember)) {
             team.push(newMember);
         }
         */
+        if (!team.includes(newMember)) {
+            setTeam([...team, newMember]);
+            setAllOptions(allOptions.filter((person) => person !== newMember));
+        }
     }
 
     function clearTeam() {
         /*
         team = [];
         */
+        setTeam([]);
+        setAllOptions(PEOPLE);
     }
 
     return (
@@ -36,7 +42,12 @@ export function ChooseTeam(): React.JSX.Element {
                     {allOptions.map((option: string) => (
                         <div key={option} style={{ marginBottom: "4px" }}>
                             Add{" "}
-                            <Button onClick={chooseMember} size="sm">
+                            <Button
+                                onClick={() => {
+                                    chooseMember(option);
+                                }}
+                                size="sm"
+                            >
                                 {option}
                             </Button>
                         </div>
