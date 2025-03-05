@@ -23,6 +23,7 @@ export function ChooseTeam(): React.JSX.Element {
         if (!team.includes(newMember)) {
             setTeam([...team, newMember]);
             setAllOptions(allOptions.filter((person) => person !== newMember));
+            //used chatGPT to help with line 25
         }
     }
 

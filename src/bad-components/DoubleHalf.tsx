@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useDoubleHalfState } from "./DoubleHalfState";
 
+//Used ChatGPT to help me with imports and the function headers
+
 function Doubler({
     dhValue,
     setDhValue,
